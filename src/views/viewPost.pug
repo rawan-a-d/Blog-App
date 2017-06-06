@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title view post
+    style
+      //- we link in the CDN-css files here
+      include ../public/css/bootstrap.min.css
+      //- Optional theme
+      include ../public/css/bootstrap-theme.min.css
+      //- This is my css file
+      include ../public/css/main.css
+  body
+    .container
+      .row
+        .col-xs-12
+            each result in results
+              .well.text-center
+                h2 Posted by
+                h2 #{result.post}
+                textarea#message.form-control.text(type='text', rows='1', name='post')
+                button.btn.btn-success Comment
+                br
+    
+    script
+      include ../public/js/jquery.min.js
+      include ../public/js/bootstrap.min.js
