@@ -2,26 +2,23 @@ doctype html
 html(lang='en')
   head
     title Jade
-    style
       //- we link in the CDN-css files here
-      include ../public/css/bootstrap.min.css
+      link(href='css/bootstrap.min.css' type='text/css' rel='stylesheet')
       //- Optional theme
-      include ../public/css/bootstrap-theme.min.css
-      //- This is my css file
-      include ../public/css/main.css
+      link(href='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
   body
     .container-fluid
       .row
         .col-xs-12.col-sm-12.col-md-12
           .well
-            form.register-form(action='/createPost', method='post')
+            form(action='/createPost', method='post')
               .row
                 .col-xs-6.col-sm-6.col-md-6
                   label.text-center(for='post') <big>Write Your post here</big>
-                  textarea#message.form-control.text(type='text', rows='7', name='post')
+                  textarea#message.form-control.text(type='text', rows='5', name='post')
+              hr
               .row
                 .col-md-6.col-sm-6.col-xs-6.col-lg-6
                   button.btn.btn-success Post
-    script
-      include ../public/js/jquery.min.js
-      include ../public/js/bootstrap.min.js
+      script(src='js/jquery.min.js')
+      script(src='js/bootstrap.min.js')

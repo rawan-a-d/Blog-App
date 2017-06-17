@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+      //- Website CSS style
+      link(href ='css/bootstrap.min.css' type='text/css' rel='stylesheet')
+      //- link(href="css/bootstrap.min.css" rel="text/css")
+      //- Website Font style
+      link(href ='css/bootstrap-theme.min.css' type='text/css' rel='stylesheet')
+      //- my CSS file
+      link(href ='css/register.css' type='text/css' rel='stylesheet')
+      //- Google Fonts
+      link(href ='css/register2.css' type='text/css' rel='stylesheet')
+  body
+    .container-fluid
+      form.register-form.form-group#register-form(action='/register', method='post')
+        .row
+          .col-md-4.col-sm-4.col-lg-4
+            label(for='name') NAME
+            input.form-control(name='name', type='text')
+        .row
+          .col-md-4.col-sm-4.col-lg-4
+            label(for='email') EMAIL
+            input.form-control#email1(name='email', type='email')
+            p.validation(style='color:white ;margin-bottom: 20px;margin-left: 10 px;')
+        .row
+          .col-md-4.col-sm-4.col-lg-4
+            label(for='password') PASSWORD
+            input.form-control(name='password', id='password' , type='password')
+        .row
+          .col-md-4.col-sm-4.col-lg-4
+            label(for='password') CONFIRM PASSWORD
+            input.form-control(name='password_conf', type='password')
+        hr
+        .row
+          .col-md-6.col-sm-6.col-xs-6.col-lg-6
+            button.regbutton(onclick = "remoteValidate(document.getElementById('email1').value)") Register
+          .col-md-6.col-sm-6.col-xs-6.col-lg-6
+            h4.te Do you have an account? <br><a href='/logIn'>Log In now</a>
+    //- jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src = 'js/jquery.min.js')
+      //- Include all compiled plugins (below), or include individual files as needed
+    script(src = 'js/bootstrap.min.js')
+    script(src ='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js')
+    script(src ='http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/additional-methods.min.js')
+    script(src = 'js/validation.js')
+

@@ -1,7 +1,6 @@
 doctype html
 html(lang='en')
   head
-    title view post
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://bootswatch.com/cosmo/bootstrap.min.css')
     link(rel='stylesheet', href='css/profile.css')
@@ -27,7 +26,7 @@ html(lang='en')
                     li
                       a(href='/viewPost') All Posts
                     li
-                      a(href='/profile') My Profile
+                      a(href='#') My Activity
                   ul.nav.navbar-nav.navbar-right
                     li.dropdown
                       a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -54,11 +53,34 @@ html(lang='en')
                                   i.fa.fa-question-circle-o(aria-hidden='true')
                                   |  Sign out
 
-      .row(style='padding-top:50px;')
-        .col-lg-10.col-lg-push-1.col-md-10.col-md-push-1.col-sm-12.col-xs-12
+        div(style='padding-top:50px;')  
+        .col-lg-4.col-md-4.hidden-sm.hidden-xs
           .panel.panel-default
+            .panel-body
+              .well
+                form#post_form
+                  textarea#new_message.span4(placeholder='Type in your Post', rows='6', cols='40')
+                      
+                  button.btn.btn-info(type='submit') Post
+        .col-lg-8.col-md-8.col-sm-12.col-xs-12
+          .panel.panel-default
+            .panel-body
+              span.pull-left
+                a.btn.btn-link(href='#', style='text-decoration:none;')
+                  i.fa.fa-fw.fa-files-o(aria-hidden='true')
+                  |  Posts
+                a.btn.btn-link(href='#', style='text-decoration:none;')
+                  i.fa.fa-fw.fa-picture-o(aria-hidden='true')
+                  |  Photos 
+                  span
+                a.btn.btn-link(href='#', style='text-decoration:none;')
+                  i.fa.fa-fw.fa-users(aria-hidden='true')
+                  |  Contacts 
+                  span
+              span.pull-right
+                a.btn.btn-link(href='#', style='text-decoration:none;')
+                  i.fa.fa-lg.fa-envelope-o(aria-hidden='true', data-toggle='tooltip', data-placement='bottom', title='Message')
           hr#comments
-
           each result in results
             hr
             .panel.panel-default#panel
@@ -66,7 +88,7 @@ html(lang='en')
                 .pull-left
                 h2
                   a(href='#', style='text-decoration:none;')
-                   strong #{result.user.name}
+                   strong #{FullName}
                 hr
                 #post-content
                     h4 #{result.content}
@@ -79,18 +101,19 @@ html(lang='en')
                       textarea.form-control#new_comment(rows='1', placeholder='Comment' , name='comment')
                       br
                       button.btn#my-btn(type='submit') Comment
-                      br
-                      each comment in result.comments
-                        .actionBox
-                          ul.commentList
-                            li
-                              .commentText
-                                h5 #{comment.user.name}
-                                p #{comment.name}
-                                span.date.sub-text #{comment.createdAt}
-                                br
-                #comment
+                each comment in result.comments
+                  .actionBox
+                    ul.commentList
+                      li
+                        .commentText
+                          h5 #{comment.user.name}
+                          p #{comment.name}
+                          span.date.sub-text #{comment.createdAt}
+                          br
 
-    script(src='js/jquery.min.js')
-    script(src='js/bootstrap.min.js')
-    script(src='js/viewpost.js')
+
+    //- jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src = 'js/jquery.min.js')
+      //- Include all compiled plugins (below), or include individual files as needed
+    script(src = 'js/bootstrap.min.js')
+    script(src = 'js/profile.js')
